@@ -37,7 +37,7 @@ def logout_view(request):
     messages.success(request, 'You have been logged out.')
     return redirect('login')
 
-@login_required
+ ## @login_required
 def starting_page(request):
     latest_posts = Post.objects.all().order_by('-date')[:3]
     return render(request, "blog/index.html", {"posts": latest_posts})
