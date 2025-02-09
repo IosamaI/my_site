@@ -42,11 +42,11 @@ def starting_page(request):
     latest_posts = Post.objects.all().order_by('-date')[:3]
     return render(request, "blog/index.html", {"posts": latest_posts})
 
-@login_required
+##@login_required
 def posts(request):  # Renamed function to avoid conflict
     all_posts = Post.objects.all()
     return render(request, "blog/all-post.html", {"all_posts": all_posts})
-@login_required
+##@login_required
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     
