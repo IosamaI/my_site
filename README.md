@@ -1,5 +1,12 @@
 # Django Blog Project
 
+![image](https://github.com/user-attachments/assets/e40290ce-3b36-4710-a469-b99ef9227c4d)
+
+
+![image](https://github.com/user-attachments/assets/57c51258-8d4b-45b6-98b4-84b517a976b3)
+
+![image](https://github.com/user-attachments/assets/096ea308-d17b-4f41-9bb8-a1aaf8a090ca)
+
 ## Overview
 This is a simple Django-based blog application that allows users to register, log in, and interact with posts. The blog supports user authentication, post creation, tagging, and commenting.
 
