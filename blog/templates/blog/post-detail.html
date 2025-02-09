@@ -1,0 +1,56 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} 
+{{ post.title }}
+{% endblock %} 
+
+{% block css_files %} 
+<link rel="stylesheet" href="{% static 'blog/post-detail.css' %}" /> 
+{% endblock %} 
+
+{% block body %}
+<section id="summary">
+  <h2>{{ post.title }}</h2>
+  <div>
+    {% for tag in post_tags %}
+    <span class="tag">{{ tag.caption }}</span>
+    {% endfor %}
+  </div>
+  <article>
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" loading="lazy" />
+    <address>By <a href="mailto:{{ post.author.email_address }}">{{ post.author }}</a></address>
+    <div>Last updated on <time datetime="{{ post.date|date:"Y-m-d" }}">{{ post.date|date:"d M Y" }}</time></div>
+  </article>
+</section>
+
+<main>
+  {{ post.content|linebreaks }}
+</main>
+
+<!-- Comment Section -->
+<section id="comments">
+  <h3>Comments</h3>
+  <ul>
+    {% for comment in post.comments.all %}
+      <li>
+        <p><strong>{{ comment.author }}</strong> says:</p> 
+        <p>{{ comment.comment_text}}</p>
+      </li>
+    {% empty %}
+      <li>No comments yet. Be the first to comment!</li>
+    {% endfor %}
+  </ul>
+
+  {% if user.is_authenticated %}
+    <h3>Leave a Comment</h3>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}  <!-- This will render the form fields -->
+      <button type="submit">Submit Comment</button>
+    </form>
+  {% else %}
+    <p>You need to be logged in to leave a comment.</p>
+  {% endif %}
+</section>
+{%endblock%}

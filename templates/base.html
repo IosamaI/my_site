@@ -1,0 +1,31 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "app.css" %}">
+    <title>{% block title %}  {% endblock title %} </title>
+</head>
+{% block css_files %}
+{% endblock  %}
+<body>
+    <header id="main-navigation">
+        <h1><a href="{% url "starting-page" %}">Osama' Blog</a></h1>
+        <nav>
+          <a href="{% url "posts-page" %}">All Posts</a> 
+
+
+          <a style="padding: 30px;" href="{% url "logout" %}">logout</a>
+        </nav>
+      </header>
+
+    {% block body%} 
+
+    {% endblock body %}
+    
+</body>
+</html>
+
